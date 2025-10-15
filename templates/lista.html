@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}Lista de Alunos{% endblock %}
+
+{% block content %}
+<h2>Lista de Alunos Cadastrados</h2>
+
+{% if alunos %}
+    <table>
+        <thead>
+            <tr>
+                <th>Nome</th>
+                <th>Matrícula</th>
+                <th>Data de Criação</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for aluno in alunos %}
+            <tr>
+                <td>{{ aluno.nome }}</td>
+                <td>{{ aluno.matricula }}</td>
+                <td>{{ aluno.criado_em|date:"d/m/Y H:i" }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% else %}
+    <p>Nenhum aluno cadastrado ainda.</p>
+    <p>
+        <a href="/admin/app/aluno/add/">Cadastre o primeiro aluno aqui</a>
+    </p>
+{% endif %}
+{% endblock %}
