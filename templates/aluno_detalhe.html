@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+
+{% block title %}Detalhes do Aluno{% endblock %}
+
+{% block content %}
+<div style="display: flex; justify-content: space-between; align-items: center;">
+    <h2>Detalhes do Aluno</h2>
+    <div>
+        <a href="{% url 'aluno_update' aluno.pk %}" class="btn btn-warning">Editar</a>
+        <a href="{% url 'lista_alunos' %}" class="btn btn-primary">Voltar para Lista</a>
+    </div>
+</div>
+
+<div style="background: #f8f9fa; padding: 20px; border-radius: 8px; margin-top: 20px;">
+    <table style="width: 100%; max-width: 500px;">
+        <tr>
+            <th style="width: 30%;">Nome:</th>
+            <td>{{ aluno.nome }}</td>
+        </tr>
+        <tr>
+            <th>Matrícula:</th>
+            <td>{{ aluno.matricula }}</td>
+        </tr>
+        <tr>
+            <th>Data de Criação:</th>
+            <td>{{ aluno.criado_em|date:"d/m/Y H:i" }}</td>
+        </tr>
+        <tr>
+            <th>ID no Sistema:</th>
+            <td>{{ aluno.pk }}</td>
+        </tr>
+    </table>
+</div>
+
+<div style="margin-top: 20px;">
+    <a href="{% url 'aluno_delete' aluno.pk %}" class="btn btn-danger">Excluir Aluno</a>
+</div>
+{% endblock %}
